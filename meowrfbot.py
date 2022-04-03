@@ -104,9 +104,6 @@ async def play(ctx, url):
             await channel.connect()
 
     queue.append(url)
-    print(queue)
-    if len(queue)>1:
-        await ctx.send(f'**\'{url}\' added to queue!**')
 
     async with ctx.typing():
         player = await YTDLSource.from_url(queue[0], loop=client.loop, stream=True)
